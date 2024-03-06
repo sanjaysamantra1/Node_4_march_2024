@@ -1,0 +1,16 @@
+        Browser                         NodeJS
+=====================================================
+1. widow                              1. window   (No)
+2. document                           2. document (No)
+3. offline storage                    3. Offline Storage (No)
+4. cookie                             4. Cookie (No)
+
+5. No File System                     5. File System (Yes)
+6. Database Interaction               6. database (Yes)
+7. Client App / UI                    7. Server App / Backend
+
+
+NodeJS
+======
+NodeJs   -  FrontEnd Development    -   Runtime Environment  - server   - (nodeJS Software)
+NodeJs   -  BackEnd Development    - Programming Language - FS , OS , HTTP , URL , CRYPTO
