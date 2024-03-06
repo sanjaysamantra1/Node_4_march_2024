@@ -1,6 +1,6 @@
         Browser                         NodeJS
 =====================================================
-1. widow                              1. window   (No)
+1. window                             1. window   (No)
 2. document                           2. document (No)
 3. offline storage                    3. Offline Storage (No)
 4. cookie                             4. Cookie (No)

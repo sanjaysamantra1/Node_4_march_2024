@@ -1,0 +1,40 @@
+How to install Vscode & Use
+============================
+1. https://code.visualstudio.com/download
+
+2. create a Javascript file and add your code there
+
+3. open terminal in the folder where your javascript file is present
+ C:\Users\SANJAY\OneDrive\Desktop\NareshIT\Node_4_march_2024\day_3 march_6
+
+4. to run the js file
+   node .\variable_demo_1.js
+
+
+variables
+=========
+var
+let
+const
+
+
+    var                                  let                              const
+=======================================================================================
+1.re-assignment-Yes              1.re-assignment-Yes           1.re-assignment-NO
+2.initialization-Not             2.initialization-not          2.initialization-mandatory
+3.since the begining             3.ECMASCRIPT-6(2015)          3.ECMASCRIPT-6(2015)
+4.can be re-declared             4.cann't be re-declared       4.cann't be re-declared
+5.global,function                5.global,function,block       5.global,function,block
+
+
+variable scope
+===============
+1. global
+2. function / local to a function
+3. block / local to a block
+
+Note: when a variable is declared without var/let/const , its scope is 'global'
+it is not recommended to declare variables  without var/let/const
+
+
+
