@@ -1,0 +1,29 @@
+use strict
+==========
+-'use strict' is used to execute javascript code in strict mode.
+-when strict mode is enabled, mistakes are converted to errors
+-in normal mode there are few mistakes they are ignored
+-'use strict' should be at the top of the script / top of the function
+
+Rules:
+=====
+-variable declaration without var/let/const is not allowed
+-Duplicate parameter name not allowed
+-we cannot use delete operator for non deleteable things
+
+
+
+Hoisting
+========
+-The process of assigning variable declarations a default value of 'undefined' during the creation phase, is called hoisting.
+-in hoisting, the variables and functions are put into memory during the creation phase
+-assignment of undefined value is done only for var variables
+
+-Javascript code gets executed in 2 phases
+    1. memory creation (variables,functions are stored in memory)
+    2. code execution  (actual execution)
+
+
+Temporal DeadZone
+================
+its state where the variable is there in memory, but we cann't use that variable
