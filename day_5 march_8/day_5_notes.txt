@@ -1,0 +1,16 @@
+Function
+========
+1. Pre-defined (The functions are alredy written, we just have to use them)
+ (console.log(),document.write(),window.alert(),Math.max())
+2. User defined (We have to declare the function & use)
+
+
+a. Function Declaration  (Named Function)
+b. Function Expression   (Anonymous Function)
+c. Self Invoked       (Immedidately Invoked function Expression- IIFE)
+d. Arrow Function ( ECMASCRIPT - 4 )
+
+Regular Function : 'this' is dynamic , it changes
+                   where/how the function is called
+Arrow Function :  'this' is not dynamic , doesn't have its own this
+                   where the function is written
