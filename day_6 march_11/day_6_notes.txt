@@ -61,3 +61,27 @@ Memoization
 -Memoization is an optimization technique used to speed up performance by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
 -its a kind of caching the data.
 -used with recursion.
+
+
+Assignment
+=========
+var nestedObject = {
+      data: {
+        info: {
+          stuff: {
+            thing: {
+              moreStuff: {
+                magicNumber: 22,
+                something: "hello",
+                manyMoreStuff: {
+                  number: 44,
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
+    let hasIt = contains(nestedObject, 44); // true
+    let doesntHaveIt = contains(nestedObject, "hiii"); // false
