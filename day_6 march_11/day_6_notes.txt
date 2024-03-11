@@ -1,0 +1,63 @@
+Function Curring
+================
+-Function Currying is a concept of breaking a function with many arguments into many functions with single argument in such a way, that the output is same. 
+-its a technique of simplifying a multi-valued argument function into single-valued argument multi-functions.
+-It helps to create a higher-order function. It is extremely helpful in event handling.
+
+	var add = function (a){
+                 return function(b){
+                       return function(c){
+                                 return a+b+c;
+                              }        
+                        }
+                  }
+	console.log(add(2)(3)(4)); //output 9
+
+
+
+Pure Function
+=============
+-Pure functions are functions that accept an input and returns a value without 
+ modifying any data outside its scope(Side Effects). 
+ 
+-A function is called pure if that follows the below 3 standards
+	1. Pure functions shouldn't update the data outside it's scope.
+	2. pure functions must return a value.
+	3. Its output or return value must depend on the input/arguments.
+
+
+
+
+Higher-order Function
+=====================
+-Higher-order function is a function that may receive a function as an argument and/or can even return a function. 
+-a function can be called as a Higher-order if that function has either of the below 2 abilities:
+	1. a function has ability to return another function.
+	2. a function has ability to take another function as argument.
+-Array filter(),map(),reduce(),sort() are some of the Higher-Order functions.
+
+
+
+function recursion
+==================
+-A recursive function is a function that calls itself until the program achieves the desired result.
+-A recursive function should have a condition that stops the function from calling itself.otherwise, 'RangeError: Maximum call stack size exceeded'  error will be thrown
+-A recursive function can be used instead of a loop where we don't know how many times the loop needs to be executed.
+
+ex: function countDown(fromNumber) {
+		console.log(fromNumber);
+		let nextNumber = fromNumber - 1;
+		if (nextNumber > 0) {
+			countDown(nextNumber);
+		}
+	}
+	countDown(5);
+
+
+
+Memoization
+===========
+-Memoization is a programming technique that attempts to increase a function’s performance by caching its previously computed results.
+-Memoization is an optimization technique used to speed up performance by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+-its a kind of caching the data.
+-used with recursion.
