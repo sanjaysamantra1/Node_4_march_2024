@@ -1,0 +1,20 @@
+<script>
+    let counter = 0;
+
+    function fibonacci(n, memo = {}) {
+        console.log('called ', ++counter);
+        if (memo[n]) {
+            return memo[n];
+        }
+        if (n <= 1) {
+            return n;
+        } else {
+            memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
+            return memo[n]
+        }
+    }
+    console.time()
+    let res = fibonacci(10);
+    console.timeEnd()
+    console.log('result is ', res)
+</script>
