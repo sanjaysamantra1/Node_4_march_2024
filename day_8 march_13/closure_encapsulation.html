@@ -1,0 +1,31 @@
+<script>
+    let account = { accNo: 12345, accBal: 5000 };
+    console.log(account.accNo, account.accBal);
+    account.accBal = -5000;
+    console.log(account.accNo, account.accBal);
+
+    function openAccount(initialBal) {
+        console.log(`Your account is opened with balance ${initialBal}`);
+        let accNo = 112233;
+        let accBal = initialBal;
+        return { // this function is not exposing the data, exposing 2 methods
+            displayInfo: function () {
+                console.log(accNo, accBal)
+            },
+            deposit: function (amt) {
+                if (amt < 0)
+                    alert('Boss, I dont need your money')
+                else
+                    accBal = accBal + amt;
+            }
+        }
+    }
+    let encapsulatedAccount = openAccount(3000);
+    console.log(encapsulatedAccount);
+    encapsulatedAccount.displayInfo();
+    encapsulatedAccount.deposit(-4000);
+    encapsulatedAccount.deposit(4000);
+    encapsulatedAccount.displayInfo();
+
+    console.dir(encapsulatedAccount.deposit)
+</script>

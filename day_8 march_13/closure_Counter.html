@@ -1,0 +1,33 @@
+<body>
+    <h1>Current value <span>0</span></h1>
+    <hr />
+    <button onclick="increment()">Increment</button>
+    <button onclick="decrement()">Decrement</button>
+    <button onclick="reset()">Reset</button>
+
+    <script>
+        function createCounter(initialVal) {
+            let currentValue = initialVal;
+
+            function printValue() {
+                document.querySelector('span').innerHTML = currentValue;
+            }
+            function increment() {
+                ++currentValue;
+                printValue();
+            }
+            function decrement() {
+                --currentValue;
+                printValue();
+            }
+            function reset() {
+                currentValue = 0;
+                printValue();
+            }
+            return { increment, decrement, reset };
+        }
+        let { increment, decrement, reset } = createCounter(0);
+        console.dir(increment)
+    </script>
+
+</body>
