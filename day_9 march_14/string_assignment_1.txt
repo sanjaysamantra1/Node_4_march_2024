@@ -1,10 +1,12 @@
 1. WAP to reverse a string
 	input:- 'sachin'
 	output:- 'nihcas'
+let rev = input.split('').reverse().join('')
 
 2. WAP to reverse words
 	input:- 'This is javascript class'
 	output:- 'class javascript is this'
+let rev = input.split(' ').reverse().join(' ')
 
 3. WAP to print the first non-repeated character in a string
    input:- 'entertainment'
@@ -12,7 +14,7 @@
    
 4. WAP to print a string in title case
 	input:- 'this is javascript class'
-   output:- 'This Is Javascript Class'
+    output:- 'This Is Javascript Class'
 	
 5. WAP to find longest word in a sentence
 	input:- 'this is javascript class'
