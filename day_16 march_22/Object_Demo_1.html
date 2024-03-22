@@ -1,0 +1,17 @@
+<script>
+    // Object - Key:Value
+    let user = { 'first name': 'sanjay', "age": 50, "add": 'bangalore' };
+
+    // if key contains a space , . cann't be used
+    // console.log(user.first name);
+    console.log(user['first name']);
+
+    let a = "add";
+    console.log(user.a);  // undefined , user object doesn't have 'a' key
+    console.log(user[a]); // when a key is stored ina  variable, use [] , dont use .
+
+    let allKeys = Object.keys(user);
+    for (oneKey of allKeys) {
+        console.log(oneKey + "  " + user[oneKey])
+    }
+</script>

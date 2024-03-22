@@ -1,0 +1,16 @@
+<script>
+    let str = 'entertainment';
+    // using Map() print the occurence of each character
+
+    let charMap = new Map();
+    for (char of str) {
+        const charExists = charMap.get(char);
+        if (charExists) {
+            let currentValue = charMap.get(char)
+            charMap.set(char, currentValue + 1)
+        } else {
+            charMap.set(char, 1)
+        }
+    }
+    console.log(charMap)
+</script>

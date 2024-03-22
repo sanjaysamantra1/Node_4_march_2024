@@ -1,0 +1,18 @@
+<script>
+    // Object - Key:Value
+    let user = { name: 'sanjay', age: 50, add: 'bangalore' };
+    console.log(user);
+    let allKeys = Object.keys(user);
+    console.log(allKeys.length);
+
+    // Map - Class - Key:Value
+    let emp = new Map();
+    emp.set('name', 'Akshay');
+    emp.set('id', 101)
+    emp.set('sal', 5000)
+    console.log(emp)
+    console.log(emp.size)
+    for (const [key, value] of emp) {
+        console.log(`${key} = ${value}`);
+    }
+</script>
