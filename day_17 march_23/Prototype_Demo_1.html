@@ -1,0 +1,18 @@
+<script>
+    class Employee {
+        constructor(eid, name, sal) {
+            this.eid = eid;
+            this.name = name;
+            this.sal = sal;
+            // this.comp = 'IBM';
+        }
+    }
+    Employee.prototype.comp = 'IBM';
+
+    let emp1 = new Employee(101, 'srinivas', 5000)
+    let emp2 = new Employee(102, 'akshay', 6000)
+    let emp3 = new Employee(103, 'manjusha', 7000)
+    console.log(emp1 , emp1.comp)
+    console.log(emp2)
+    console.log(emp3)
+</script>

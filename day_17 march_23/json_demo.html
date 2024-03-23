@@ -1,0 +1,13 @@
+<script>
+    let user = { name: 'sachin', age: 50, add: 'mumbai' };
+
+    // sessionStorage.userdata = user;
+    // object data should not be stored in sessionstorage
+    sessionStorage.userdata = JSON.stringify(user);
+
+    let userStr = sessionStorage.userdata;
+    console.log(userStr.name, userStr.age); // string data
+
+    let userOb = JSON.parse(userStr);
+    console.log(userOb.name, userOb.age)
+</script>

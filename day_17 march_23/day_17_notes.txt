@@ -1,0 +1,16 @@
+-Object class static functions : 
+	assign() - Copies properties from one or more source objects to a target object.
+	create() -  creates a new object, using an existing object as the prototype of the newly created object
+	freeze() - Freezes an object. neither the structure nor values can be changed
+	isFrozen() - Determines if an object was frozen
+	seal()  - structure of the object cann't be modified, value of the properties can be changed.
+	isSealed() - Determines if an object is sealed.
+	preventExtensions() -new properties cann't be added to an object, properties can be deleted, value of the properties can be changed
+    isExtensible() - Determines if extending of an object is allowed
+	keys()	- Returns an array of keys
+	values() - Returns an array of values
+	entries() - returns an array of [key, value] pairs
+	fromEntries() - transforms an array/Map into an Object
+	
+-JSON.stringify()  converts object to string.
+-JSON.parse()      converts string to object.

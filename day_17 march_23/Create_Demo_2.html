@@ -1,0 +1,18 @@
+<script>
+    let obj1 = { a: 10, b: 20 };
+    let obj2 = obj1; // address copy
+    obj1.a = 15;
+    obj2.b = 25;
+    console.log(obj1, obj2);
+
+    let obj3 = { a: 100, b: 200 };
+    let obj4 = Object.create(obj3); // obj3 is used as prototype in obj4
+    console.log(obj3)
+    console.log(obj4)
+    obj3.a = 150;
+    console.log(obj3.a, obj3.b) // 150  200
+    console.log(obj4.a, obj4.b) // 150  200
+    obj4.b = 250; // its not doing anything with prototype, its adds an extra b in obj4
+    console.log(obj3.a, obj3.b) // 150  200
+    console.log(obj4.a, obj4.b) // 150  250
+</script>
