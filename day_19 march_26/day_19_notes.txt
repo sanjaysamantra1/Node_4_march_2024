@@ -1,0 +1,105 @@
+What Can Node.js Do?
+====================
+-Node.js can generate dynamic page content.
+-Node.js can create, open, read, write, delete, and close files on the server.
+-Node.js can collect form data.
+-Node.js can add, delete, modify data in the database.
+
+
+
+How NodeJs works/NodeJs Process Model
+=====================================
+-In the traditional web server model, each request is handled by a dedicated thread from the thread pool.
+If no thread is available in the thread pool at any point of time then the request waits till the next available tClientshread. 
+-Dedicated thread executes a particular request and does not return to thread pool until it completes the execution and returns a response.
+
+-All the user requests are handled by a single thread and all the I/O work or long running job is performed asynchronously for a particular request. 
+this single thread doesn't have to wait for the request to complete and is free to handle the next request. 
+-When asynchronous I/O work completes then it processes the request further and sends the response.
+-An event loop is constantly watching for the events to be raised for an asynchronous job and executing callback function when the job completes. 
+-Internally, Node.js uses libuv for the event loop which in turn uses internal C++ thread pool to provide asynchronous I/O.
+
+
+
+1.  send HTTP requests to NodeJS server.
+2. Event-Loop(Single Thread) delegates long-running operations to non-blocking workers and becomes available to handle the next request.
+3. When asynchronous I/O work completes, EventLoop processes the request further and sends the response to the client.
+
+https://www.dotnettricks.com/learn/nodejs/exploring-nodejs-code-execution-process
+https://cdn.buttercms.com/0Nh1yR6SSPwqnsKYSfHa
+ 
+process.env.UV_THREADPOOL_SIZE=6  (4 default, max 128)
+Worker Threads- File System API, Cryptography, Compression, DNS Lookup
+
+
+
+NodeJs vs Others
+================
+-A common task for a web server can be to open a file on the server and return the content to the client.
+
+Here is how PHP or ASP handles a file request:
+	1. Sends the task to the computer's file system.
+	2. Waits while the file system opens and reads the file.
+	3. Returns the content to the client.
+	4. Ready to handle the next request.
+Here is how Node.js handles a file request:
+	1. Sends the task to the computer's file system.
+	2. Ready to handle the next request.
+	3. When the file system has opened and read the file, the server returns the content to the client.
+-Node.js eliminates the waiting, and simply continues with the next request.
+-Node.js runs single-threaded, non-blocking, asynchronously programming, which is very memory efficient.
+
+
+
+Blocking vs Non-Blocking I/O
+============================
+-waiter takes the order and gives it to chef.
+ while the chef is preparing that order, 
+ waiter will take new orders and will give it back to the chef.
+ waiter doesn't wait for the chef to prepare the food.
+-Non-blocking I/O operations allow a single process to serve multiple requests at the same time. -Instead of the process being blocked and waiting for I/O operations to complete, the I/O operations are delegated to the system, so that the process can execute the next piece of code. -Non-blocking I/O operations provide a callback function that is called when the operation is completed.
+-Blocking methods execute synchronously and non-blocking methods execute asynchronously.
+-let's consider a case where each request to a web server takes 50ms to complete and 45ms of that 50ms is database I/O that can be done asynchronously. Choosing non-blocking asynchronous operations frees up that 45ms per request to handle other requests. This is a significant difference in capacity just by choosing to use non-blocking methods instead of blocking methods.
+
+
+Q. What is Reactor Pattern in Node.js?
+-Assigning a callback function to each I/O operation is called the Reactor Pattern.
+-It’s the responsibilty of the system to run the handler function once the data from the event is available.
+
+
+How to install Node.js
+======================
+-Official packages for all the major platforms are available in the below URL
+ https://nodejs.dev/en/download/
+ https://nodejs.org/en/about/previous-releases
+ 
+ 
+How to Maintain multiple NodeJS versions
+========================================
+-NVM : Node version Manager
+-NVM is a version manager for node.js
+-Multiple nodeJS versions can be maintained with the help of NVM.
+-It allows to easily switch the Node.js version.
+  NVM for Mac - https://tecadmin.net/install-nvm-macos-with-homebrew/
+  NVM for windows - https://github.com/coreybutler/nvm-windows
+
+
+NVM useful commands
+-------------------
+-Check NVM is installed
+ nvm --version
+-List all the available Node Versions to be installed
+ nvm list available
+-List all the installed Node Versions
+ nvm list installed / nvm ls
+-To install latest node version
+ nvm install node
+-To install a particular version of node
+ nvm install 16.0.0
+-To uninstall a particular version of node
+ nvm uninstall 16.0.0
+-To switch node version
+ nvm use 16.0.0
+-To check currently used node version
+ nvm current / node -v
+ 
