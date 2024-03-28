@@ -1,0 +1,99 @@
+VS Code Extensions
+==================
+vscode-icons
+prettier
+tab nine
+thunderclient
+ESLint
+
+
+
+
+Debug NodeJs Code
+=================	
+1. Debugging natively
+  a. node inspect your-script.js  (type next, help)
+     go to browser --> chrome://inspect/
+  b. use debugger;  in a code line you want
+  
+cont, c               Resume execution
+next, n               Continue to next line in current file
+step, s               Step into, potentially entering a function
+out, o                Step out, leaving the current function
+backtrace, bt         Print the current backtrace
+  
+  
+2. visual Studio Code
+   a. In the Debug panel, click the settings icon to open .vscode/launch.json.
+   Select "Node.js" for initial setup.
+   b. go to the JS file add debug points
+   c. go to Debug Panel, click 'Run' button
+
+
+
+
+
+
+NPM (Node Package Manager)
+==========================
+-npm is the standard package manager for Node.js.
+-Node Package Manager (NPM) provides two main functionalities:
+	1.Online repositories for node.js packages
+	which are searchable on https://www.npmjs.com/
+	2.Command line utility to install Node.js packages, do version management and dependency management of Node.js packages.
+	
+-NPM comes bundled with Node.js installables.
+-To verify npm version, Run the below command  
+ npm --version/-v
+ 
+-initialize a nodejs project
+ npm init
+ npm init -y (everything default)
+ 
+-npm install 
+ install all the modules as specified in package.json
+
+-Install a Module using npm
+ npm install <Module Name>
+ 
+-Install the package globally
+ npm install <package_name> -g
+ 
+-Save the package as dependency
+ npm install <package_name> --save
+ 
+-Save the package as dev-dependency
+ npm install <package_name> --save-dev 
+ 
+-Install the latest version of a package
+ npm install <package_name>@latest
+ 
+-Install any particluar version of a package
+ npm install <package_name>@<version_number>
+ npm install bootstrap@4.0.1
+ 
+-Uninstalling Packages/Modules via NPM
+ npm uninstall <package_name>
+ 
+-Update Packages/Modules via NPM
+ npm update <package_name>
+ 
+-Searching a particular package
+ npm search <package_name>
+ 
+-List all Installed Packages Locally
+ npm list/ls
+
+-List all Installed Packages Globally
+ npm ls -g
+ 
+-Run a Script
+ npm run <script-name>
+
+
+npm i nodemon 			 	--> helps during development and production dependencies
+npm i nodemon --save  		--> helps during development and production dependencies
+npm i nodemon --save-dev  	--> helps during development not in production(-D)
+npm i nodemon --no-save 	--> installs but does not add the entry to the package.json file dependencies
+npm i nodemon --save-optional --> installs and adds the entry to the package.json file optionalDependencies
+npm i --no-optional  --> will prevent optional dependencies from being installed
