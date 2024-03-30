@@ -1,0 +1,67 @@
+NPX
+===
+NPX : Node Package Executer (used to execute Node.js packages)
+-executes Node.js commands without installing them.
+-When you install NPM version 5.2.0 or higher, get NPX installed
+-we can install npx using the below comand
+ npm i -g npx
+-npx helps us avoid versioning, dependency issues and installing unnecessary packages that we just want to try out.
+-provides a clear and easy way of executing packages, commands, modules and even GitHub gists and repositories.
+-ex:npx create-react-app my-sample-react-app
+    npx nodemon file1.js
+
+
+
+Nodemon
+=======
+-Nodemon is a utility that will monitor for any changes in your source and automatically restart your server.
+-Nodemon can be installed using NPM.
+ ex:- npm i -g nodemon
+-Nodemon can be used without installing also, using npx
+ npx nodemon file1.js
+-nodemon help
+ nodemon -h 
+ nodemon --help
+-Just use nodemon instead of node to run your code, your process will automatically restart when your code changes
+ ex:- node file1.js      (server won't be re-started when code is changed)
+      nodemon file1.js   (server gets re-started when there is a code change)
+	  npx nodemon file1.js   (server gets re-started when there is a code change)
+-The 'node_modules' folder is ignored by default by nodemon.
+-You can restart the process at any time by typing 'rs' and hitting enter.
+
+
+Nodemon Features:
+----------------
+-Automatic restarting of application.
+-Ignoring specific files or directories.
+ nodemon --ignore public server.js
+-Watch specific directories.
+ nodemon --watch src server.js
+-Open source and available on github.
+ 
+
+
+Node.js Global Objects
+======================
+-Node.js global objects are global in nature and available in all modules.
+-we dont have to include these objects in our application; they can be directly used.
+-A list of Node.js global objects are given below:
+	__dirname
+	__filename
+	console - log(),error(),warn(),time(),timeEnd(),trace(),dir(),assert(),table()
+	process - exit(),beforeExit(), uncaughtException()
+	buffer
+	setImmediate(callback[, arg][, ...])
+	setInterval(callback, delay[, arg][, ...])
+	setTimeout(callback, delay[, arg][, ...])
+	clearImmediate(immediateObject)
+	clearInterval(intervalObject)
+	clearTimeout(timeoutObject)
+	structuredClone()
+	atob()
+	btoa()
+	export
+	require
+	fetch
+	global
+	navigator
