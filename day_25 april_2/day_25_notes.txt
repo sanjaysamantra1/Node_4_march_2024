@@ -1,0 +1,66 @@
+This
+====
+-this is determined when a function is called. Not when a function is created.
+-In the top-level code in a Node module, 'this' is equivalent to module.exports. That's the empty object.
+ex: console.log(this, this === module.exports); //true
+	module.exports.name = "sanjay";
+	console.log(this); // { name:sanjay }
+	
+-in Normal Mode:
+	a. this value inside a regular/normal function is 'global Object'.
+	b. this value inside an arrow function is {} (module.exports)
+-in strictmode, this value inside a function is undefined.
+
+-The object left of the dot is the value of this for normal functions.
+-This rule does not apply for arrow function, as they don't have their own binding of this.
+
+
+
+
+
+
+NodeJs Modules
+==============
+-A way of encapsulating code in to separate logical units.
+-Module:A set of functions you want to include in your application.
+-In Node.js module system, each file is treated as a separate module.
+-Node.js includes three types of modules:
+	1. Core(Built-in) Modules     	  (os,fs,http,process,path,url)
+	2. Local(Custom) Modules    	  (created locally in our application)
+	3. Third Party(External) Modules  (can be installed using NPM, and can be used) ex:-minimist,express,mongoose,lodash,moment,chalk,cors,axios
+
+
+Core Modules:
+-------------
+os-Get OS information
+fs-work with the file system
+path-handles path elegantly
+url-url module includes methods for URL resolution and parsing.
+querystring-querystring module includes methods to deal with query string.
+http-launch a server,send requests
+https-launch a SSL server
+events-working with events
+util-util module includes utility functions useful for programmers.
+
+
+
+Local(Custom) Modules 
+=====================
+-Node.js has two types of modules: 
+	1. ES modules 
+	2. CommonJS modules
+-By default, Node.js treats JavaScript as CommonJS modules. But we can tell Node.js to treat JavaScript code as ES modules.
+-Node.js will treat the following files as ES modules:
+	a.Files ending in .mjs
+	b.if "type": "module" is set in package.json
+
+
+
+External Modules(minimist,chalk,validator,lodash,moment)
+----------------
+1. Installing an npm Module
+   npm install validator
+2. Importing an npm Module
+   const validator = require('validator')
+   console.log(validator.isURL('https://www.google.co.in/')) // true
+   console.log(validator.isEmail('abc@gmail.com')) // true
