@@ -1,15 +1,15 @@
-const { exec } = require('child_process');
+const { execFile } = require('child_process');
 const { writeFile } = require('fs');
 
-exec('dir', (error, stdout, stderr) => {
+execFile(`${__dirname}/demo.bat`, (error, stdout, stderr) => {
     // if the command is not found
     if (error) {
-        console.log(error.message);
+        console.log('no command found');
         return;
     }
     // if error occurs while executing the command
     if (stderr) {
-        console.log(stderr);
+        console.log('command could not be executed');
         return;
     }
     writeFile('abc.txt', stdout, (err, data) => {
