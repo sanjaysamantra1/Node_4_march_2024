@@ -92,4 +92,5 @@ Route Parameter
                                     route/routeParameter
 
 2. Query Parameter
-   https://www.flipkart.com/search?q=skybag&otracker=search                                   
+   https://www.flipkart.com/search?q=skybag&otracker=search  
+                           route?key1=value1&key2=value2      
