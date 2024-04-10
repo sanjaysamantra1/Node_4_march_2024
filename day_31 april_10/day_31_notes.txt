@@ -1,0 +1,22 @@
+How to use Express
+==================
+1. import express
+   const express = require('express')
+2. create an instance of express.
+   const app = express()
+3. use methods
+   app.get(route, callback)
+   app.post(route, callback)
+
+
+Express Methods
+===============
+app.get()
+app.post()
+app.put()
+app.patch()
+app.delete()
+app.listen()
+app.use()
+app.all()
+
