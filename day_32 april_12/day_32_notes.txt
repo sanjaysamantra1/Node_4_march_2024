@@ -1,0 +1,88 @@
+Response methods
+================
+The methods on the response object (res) in the following table can send a response to the client, and terminate the request-response cycle. If none of these methods are called from a route handler, the client request will be left hanging.
+
+Method	Description
+res.send()	Send a response of various types.
+res.end()	End the response process.
+res.json()	Send a JSON response.
+res.jsonp()	Send a JSON response with JSONP support.
+res.redirect()	Redirect a request.
+res.render()	Render a view template.
+res.sendFile()	Send a file as an octet stream.
+res.download()	Prompt a file to be downloaded.
+res.sendStatus()	Set the response status code and send its string representation as the response body.
+
+
+
+Serving static files in Express
+===============================
+-To serve static files such as images, CSS files, and JavaScript files, use the express.static() built-in middleware function in Express. 
+express.static(root, [options])
+-The root argument specifies the root directory from which to serve static assets.
+ app.use(express.static('public'))
+-To use multiple static assets directories, call the express.static() middleware function multiple times:
+	app.use(express.static('public'))
+	app.use(express.static('files'))
+	
+	
+
+Middlewares
+===========
+-Middlewares are like a middleman between a request and the response in a REQUEST → RESPONSE cycle.
+-Middlewares in ExpressJS are functions that can modify Request and Response objects either to retrieve or store relevant information.
+-An example of a simple express js middleware could be to log the current date and time on every URL the user visits on our website.
+
+req => middleware => res
+
+app.use((req, res, next) => {
+  console.log('The time is: '+ Date.now())
+  next();
+})
+
+
+Order of Middleware Calls
+=========================
+-The order in which they are written/included in the file; the order they are executed.
+
+
+
+
+Body-parser
+===========
+-parse the body of requests which have payloads attached to them.
+-Parse incoming request bodies(formData) in a middleware before handlers are invoked.
+-extracts the body portion of an incoming request & exposes it on req.body.
+-parses the data submitted using HTTP POST request.
+ npm install body-parser --save
+ 
+ // parse application/x-www-form-urlencoded
+ app.use(bodyParser.urlencoded({ extended: false }))
+
+ // parse application/json
+ app.use(bodyParser.json())
+ 
+ 
+Note: ExpressJS provides its inbuilt functions for parsing request body
+	app.use(express.json()); 
+	app.use(express.urlencoded()); 
+ 
+
+
+Express PathParam & QueryParam
+==============================
+1. Path-Param
+	ex:- /productDetails/101
+	const userId = req.params.userId;
+
+2. Query-param
+	ex:- /search?searchWord=skybag&filter=something
+	const {searchWord,filter} = req.query;
+
+
+
+cookie-parser
+=============
+-It parses Cookie header and populate req.cookies with an object keyed by cookie names. 
+	var cookieParser = require('cookie-parser');
+	app.use(cookieParser())
