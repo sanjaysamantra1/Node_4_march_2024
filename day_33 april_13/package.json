@@ -1,0 +1,16 @@
+{
+  "name": "day_33-april_13",
+  "version": "1.0.0",
+  "description": "",
+  "main": "PathParam_demo_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2"
+  }
+}
