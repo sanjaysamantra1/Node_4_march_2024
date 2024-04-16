@@ -1,0 +1,14 @@
+<html>
+
+<body>
+    <script>
+        async function fetchTodos() {
+            let response = await fetch('http://localhost:5000/todos');
+            let todos = await response.json();
+            console.log(todos);
+        }
+        fetchTodos();
+    </script>
+</body>
+
+</html>
