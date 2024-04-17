@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container-fluid">
+    <nav>
+        <%- include('../partials/navbar'); %>
+    </nav>
+    <main>
+        <h1 class="text-center">ProductList</h1>
+        <div class="row">
+            <% productsArr.forEach(function(product) { %>
+                <div class="col-sm-3">
+                    <div class="card text-center">
+                        <img height="150px" class="card-img-top" src="<%= product.image%>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= product.title%>
+                            </h5>
+                            <p class="card-text text-truncate">
+                                <%= product.description%>
+                            </p>
+                            <a href="#" class="btn btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+
+</html>

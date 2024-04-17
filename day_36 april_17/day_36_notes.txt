@@ -1,0 +1,7 @@
+Template Engines for Node.js
+============================
+-Template engine helps  to create an HTML template with minimal code. 
+-It can inject data into HTML template at client side and produce the final HTML.
+-Template engines for Node.js (Jade/pug,Vash,EJS,Handlebars)
+
+https://expressjs.com/en/guide/using-template-engines.html
