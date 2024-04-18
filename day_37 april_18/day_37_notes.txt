@@ -1,0 +1,52 @@
+Data Access in Node.js
+======================
+-Node.js supports all kinds of databases(RDBMS/NO-SQl)
+ However, NoSQL databases like MongoDB are the best fit with Node.js
+-To access the database in Node.js application, the driver needs to be installed for the database 
+ex:npm install mysql (for MySQL)
+   npm install oracledb (for Oracle)
+   npm install mongodb (MongoDB)
+
+
+MongoDB
+=======
+-it stores data in the collections as JSON based documents and does not enforce schemas. 
+-UnStructured data.
+-It does not have tables, rows, and columns as other SQL (RDBMS) databases.
+-RDBMS  (Database,Table,Row,Column)
+ MongoDB(Database,Collection,Document,Field)
+-indexing , shemaless , Replication, Scalability, Performance, High Availability.
+-No SQL databases - MongoDB, cassandra, Amazon Dynamo DB, couchbase, redis.
+ Relational databases - MySql , Oracle , PostgreSQL
+ 
+
+Sql         MongoDB
+===================
+Database    Database
+Table       Collection
+Row         Document
+Column		Field
+Select      find
+Insert      Insert
+Update      Update
+Delete      Remove
+
+schema- predefined  schema-run time
+join                no join
+
+
+
+MongoDB Local
+=============
+1. download and install (MongoDB Community Server)
+   https://www.mongodb.com/try/download/community 
+					(OR)
+   https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.5-signed.msi
+2. Go to the path where MongoDB is installed,and run 'mongod.exe'  
+   By default it is "C:\Program Files\MongoDB\Server\6.0\bin"
+4. Expect Error as the data directory is not set
+   "{"error":"NonExistentPath: Data directory C:\\data\\db\\ not found"
+5. create folder 'c:\data\db'
+6. run 'mongod.exe'
+7. set path for mongo-server(To start mongodb from any path)
+	C:\Program Files\MongoDB\Server\6.0\bin
