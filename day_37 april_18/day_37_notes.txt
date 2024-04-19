@@ -50,3 +50,13 @@ MongoDB Local
 6. run 'mongod.exe'
 7. set path for mongo-server(To start mongodb from any path)
 	C:\Program Files\MongoDB\Server\6.0\bin
+
+MongoDB Compass
+===============
+-MongoDB Compass is a graphical interface to interact with the MongoDB 
+1. download and install mongoDB Compass
+  https://www.mongodb.com/products/compass
+2. open mongoDB Compass GUI
+3. Enter mongoDB Connection String 
+   mongodb://localhost:27017  (OR)
+   mongodb://127.0.0.1:27017

@@ -1,0 +1,116 @@
+MongoDB Queries/Commands
+========================
+https://www.geeksforgeeks.org/mongodb-tutorial/
+
+-To See All databases
+ show dbs;
+ show databases;
+-To Use one database
+ use sanjaydb1  (creates a new database if it doesn’t exist)
+-To see the Current Database
+ db 
+-To see all the collections under a database
+ show collections
+-To Create a Collection/Table
+ db.createCollection('employees')
+-To add a Document/Row in a collection
+ db.employees.insertOne({eid:1,name:'sanjay',sal:5000})
+ db.employees.insertOne({_id:1,eid:101,name:'sanjay',sal:5000})
+ db.employees.insertMany([{eid:1,name:'sanjay',sal:5000},
+            {eid:2,name:'sameer',sal:6000}])
+-To  see data inside collections
+ db.employees.find() 
+ db.employees.find().pretty()
+ db.employees.find( {sal: 6000} )
+ db.employees.findOne({sal: 6000})
+ db.employees.find( {name:'abc',sal: 6000} )
+ db.employees.find({"address.city":"bangalore"}) //Nested
+ db.employees.find({sal: {$lt:6000}}) 
+ db.employees.find({sal: {$lte:6000}}) 
+ db.employees.find({sal: {$ne:6000}})
+ db.employees.find({sal: {$gt:5000, $lt:9000}})
+ db.employees.find({"name":{$in:["Raj", "Ram", "Raghu"]}})
+ db.employees.find({$or:[{name:"ram"},{sal:5000}]})
+ db.employees.find({"name":/san/i})   // (Like in SQL)
+ 
+Projection : which fields to include in the results
+             use 1 to include a field and 0 to exclude a field.
+
+ db.employees.find( {} , {sal:0} ) // all columns except sal
+ db.employees.find( {} , {sal:1,name:1} ) // name,sal column in result
+ 
+
+ db.employees.find().sort({sal:1})   //asc
+ db.employees.find().sort({sal:-1}) //desc
+ db.employees.find().count()
+ db.employees.countDocuments({salary:13001});
+ db.employees.find().limit(2)
+ db.employees.distinct('eid');
+ 
+-To Update the existing Data
+ db.employees.updateOne( { id: 101 }, { $set: { sal: 2000 } } ) 
+ db.employees.updatemany( { sal:6000 }, { $set: { sal: 6500 } } )
+ db.employees.updateOne({id: 101},{$set:{eid:1,name:'sanjay',sal:5000}},{ upsert: true })
+ // Update the document, but if not found insert it
+-To Delete 
+ db.employees.deleteOne({ sal:6000 })
+ db.employees.deleteMany({ name: "sanjay" })
+ db.employees.remove({ id:101 }) 	// Deprecated
+ db.users.deleteMany({})   // Remove All Documents(equivalent of SQL's truncate)
+ 
+ db.employees.drop()  // Drop The Collection
+ db.dropDatabase()    // Drop Database
+
+
+MongoDB Query Operators
+=======================
+Comparison : $eq, $ne, $gt, $gte, $lt, $lte, $in
+Logical    : $and, $or, $nor, $not  
+Evaluation : $regex, $text, $where
+
+
+$regex
+======
+db.employees.find( { phone: { $regex: /789$/ } } );  
+
+$text
+=====
+db.articles.find( { $text: { $search: "coffee" } } )
+db.articles.find( { $text: { $search: "Coffee", $caseSensitive: true } } )
+db.articles.find( { $text: { $search: "bake coffee cake" } } ) 
+ bake / coffee / cake
+db.articles.find( { $text: { $search: "\"coffee shop\"" } } )
+ coffee shop
+db.articles.find( { $text: { $search: "\'coffee shop\' \'Cafe con Leche\'" } } )
+ Or
+
+$where
+db.table3.find( { $where: function() { return (this.english == this.science) }})
+
+
+MongoDB Update Operators
+========================
+$currentDate: Sets the field value to the current date
+$inc: Increments the field value
+$rename: Renames the field
+$set: Sets the value of a field
+$unset: Removes the field from the document
+
+Array
+$addToSet: Adds distinct elements to an array
+$pop: Removes the first or last element of an array
+$pull: Removes all elements from an array that match the query
+$push: Adds an element to an array
+
+ 
+implicit and vs explicit $and
+==============================
+implicit - {name:'abc',sal: 6000}
+Explicit - { $and: [ {name:'sanjay',sal:6000}] }
+
+db.employees.deleteMany({name:'sanjay',name:'geeta',name:'sameer'})
+-only sameer will be deleted, first 2 conditions are ignored
+
+-don't use implecit AND if the field name is same;
+-it ignores the first condition, only executes second condition.
+db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
