@@ -1,0 +1,52 @@
+MongoDB Query Operators
+=======================
+Comparison : $eq, $ne, $gt, $gte, $lt, $lte, $in
+Logical    : $and, $or, $nor, $not  
+Evaluation : $regex, $text, $where
+
+
+$regex
+======
+db.employees.find( { phone: { $regex: /789$/ } } );  
+
+$text
+=====
+db.articles.find( { $text: { $search: "coffee" } } )
+db.articles.find( { $text: { $search: "Coffee", $caseSensitive: true } } )
+db.articles.find( { $text: { $search: "bake coffee cake" } } ) 
+ bake / coffee / cake
+db.articles.find( { $text: { $search: "\"coffee shop\"" } } )
+ coffee shop
+db.articles.find( { $text: { $search: "\'coffee shop\' \'Cafe con Leche\'" } } )
+ Or
+
+$where
+db.table3.find( { $where: function() { return (this.english == this.science) }})
+
+
+MongoDB Update Operators
+========================
+$currentDate: Sets the field value to the current date
+$inc: Increments the field value
+$rename: Renames the field
+$set: Sets the value of a field
+$unset: Removes the field from the document
+
+Array
+$addToSet: Adds distinct elements to an array
+$pop: Removes the first or last element of an array
+$pull: Removes all elements from an array that match the query
+$push: Adds an element to an array
+
+ 
+implicit and vs explicit $and
+==============================
+implicit - {name:'abc',sal: 6000}
+Explicit - { $and: [ {name:'sanjay',sal:6000}] }
+
+db.employees.deleteMany({name:'sanjay',name:'geeta',name:'sameer'})
+-only sameer will be deleted, first 2 conditions are ignored
+
+-don't use implecit AND if the field name is same;
+-it ignores the first condition, only executes second condition.
+db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
