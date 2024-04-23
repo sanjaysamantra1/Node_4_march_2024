@@ -10,9 +10,8 @@ async function connectToDB() {
 
 app.get('/users', async (req, res) => {
     try {
-        const users = client.db('march_4_2024').collection('users').find({});
-        const usersArr = await users.toArray();
-        res.json(usersArr);
+        const users = await client.db('march_4_2024').collection('users').find({}).toArray();
+        res.json(users);
     } catch (err) {
         console.log(err)
     }
