@@ -8,6 +8,7 @@ var { ruruHTML } = require("ruru/server")
 let courseSchema = buildSchema(`
     type Query{
         course(id:Int):Course
+        courses:[Course]
     }
     type Course{
         id:Int,
@@ -33,7 +34,7 @@ let getAllCourses = function () {
 }
 let root = {
     course: getCourse,
-    getAllCourses: getAllCourses
+    courses: getAllCourses
 }
 
 // express
