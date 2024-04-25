@@ -36,7 +36,15 @@ app.post('/employees', async (req, res) => {
         console.log(err)
     }
 });
-app.patch('/employees/:id', async (req, res) => {
+p.delete('/employees/:id', async (req, res) => {
+    const employeeId = +req.params.id;
+    try {
+        await client.db('march_4_2024').collection('employees').deleteOne({ eId: employeeId });
+        res.send('Employee Deleted Successfully');
+    } catch (err) {
+        console.log(err)
+    }
+})app.patch('/employees/:id', async (req, res) => {
     const employeeId = +req.params.id;
     const payload = req.body;
     try {
@@ -46,15 +54,7 @@ app.patch('/employees/:id', async (req, res) => {
         console.log(err)
     }
 });
-app.delete('/employees/:id', async (req, res) => {
-    const employeeId = +req.params.id;
-    try {
-        await client.db('march_4_2024').collection('employees').deleteOne({ eId: employeeId });
-        res.send('Employee Deleted Successfully');
-    } catch (err) {
-        console.log(err)
-    }
-});
+ap;
 
 app.listen(5000, async () => {
     await connectToDB();
