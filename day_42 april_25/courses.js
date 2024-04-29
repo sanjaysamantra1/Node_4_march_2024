@@ -1,7 +1,7 @@
 var express = require("express")
 var cors = require('cors')
 var { createHandler } = require("graphql-http/lib/use/express")
-var { buildSchema, GraphQLList } = require("graphql")
+var { buildSchema } = require("graphql")
 var { ruruHTML } = require("ruru/server")
 
 // GraphQL Schema
