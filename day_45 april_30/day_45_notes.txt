@@ -1,0 +1,11 @@
+Nodemailer
+==========
+1. npm install nodemailer 
+
+Google App password
+===================
+-Go to your Google Account.(https://myaccount.google.com/)
+-->Security --> How you sign in to Google --> 2-Step Verification
+-->App passwords --> Generate a new password
+
+https://myaccount.google.com/apppasswords
