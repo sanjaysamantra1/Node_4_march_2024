@@ -17,7 +17,7 @@ app.get('/sendMail', async (req, res) => {
 
     let mailInfo = {
         from: 'sanjaysamantra2@gmail.com', // sender address
-        to: ["aviksarkar29@gmail.com", "manjusha772019@gmail.com"], // list of receivers
+        to: ["aviksarkar29@gmail.com", "manjusha772019@gmail.com","srinivas.dasari21@gmail.com"], // list of receivers
         subject: "Test Email Using NodeJS", // Subject line
         html: `
             <h1>This is a Test Email</h1>
@@ -29,7 +29,10 @@ app.get('/sendMail', async (req, res) => {
                 Hiiiiii
                 Good Morning
             </pre>
-        `
+        `,
+        attachments:[
+            {fileName:'profile.png',path:'./profile.png'}
+        ]
     }
     await transporter.sendMail(mailInfo);
     res.send("Mail Sent Succesfully")

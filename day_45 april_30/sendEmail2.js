@@ -29,7 +29,10 @@ app.get('/sendMail', async (req, res) => {
                 Hiiiiii
                 Good Morning
             </pre>
-        `
+        `,
+        attachments:[
+            {fileName:'profile.png',path:'./profile.png'}
+        ]
     }
     await transporter.sendMail(mailInfo);
     res.send("Mail Sent Succesfully")
