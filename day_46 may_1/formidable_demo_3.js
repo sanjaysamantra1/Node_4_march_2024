@@ -13,16 +13,23 @@ app.get('/', (req, res) => {
     </form>
     `)
 })
+let cancelUploads = false;
 let options = {
     multiples: true,
     maxFileSize: 1024 * 1024 * 5,
-    filter: ({ name, mimetype }) => {
-        return mimetype && mimetype.includes('image')
+    filter: function ({ name, originalFilename, mimetype }) {
+        // keep only images
+        const valid = mimetype && mimetype.includes("image");
+        if (!valid) {
+            form.emit('error', new Error('validation failed')); // optional make form.parse error
+            cancelUploads = true; //variable to make filter return false after the first problem
+        }
+        return valid && !cancelUploads;
     }
 }
+const form = formidable(options);
 
 app.post('/api/upload', async (req, res) => {
-    const form = formidable(options);
     let fields;
     let files;
     try {
@@ -33,7 +40,9 @@ app.post('/api/upload', async (req, res) => {
             let imageFile = fs.readFileSync(oldPath);
             fs.writeFileSync(newPath, imageFile);
         }
-        res.send({files,fields})
+        res.send('Files Uploaded Successfully')
+        // res.json({files})
+
     } catch (err) {
         res.writeHead(400, { 'Content-Type': 'text/plain' });
         res.end(String(err));
