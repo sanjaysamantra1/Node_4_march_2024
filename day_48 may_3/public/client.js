@@ -90,6 +90,7 @@ socket.on("user disconnected", function (userName) {
 
 socket.on("chat message", function (data) {
     addNewMessage({ user: data.nick, message: data.message });
+    fallback.innerHTML = ``;
 });
 
 
