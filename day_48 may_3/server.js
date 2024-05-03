@@ -1,6 +1,5 @@
 const express = require('express');
 const { createServer } = require('node:http');
-const { join } = require('node:path');
 const { Server } = require('socket.io');
 
 const app = express();
@@ -15,16 +14,19 @@ io.on('connection', (socket) => {
     console.log('a user connected');
 
     socket.on('new user', function (data) {
+        if(data === 5){
+            console.log('hiiii');
+        }
         socket.userId = data;
         activeUsers.add(data);
-        io.emit('new user', [...activeUsers])
+        io.emit('new user', [...activeUsers]);
     })
-    socket.on('disconnect', function (name) {
+    socket.on('disconnect', function () {
         activeUsers.delete(socket.userId);
-        io.emit('user disconnected', socket.userId)
+        io.emit('user disconnected', socket.userId);
     })
     socket.on('chat message', function (data) {
-        io.emit('chat message', data)
+        io.emit('chat message', data);
     })
     socket.on('typing', function (data) {
         socket.broadcast.emit('typing', data);
