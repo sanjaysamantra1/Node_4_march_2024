@@ -15,7 +15,7 @@ const newUserConnected = (user) => {
 };
 
 const addToUsersBox = (userName) => {
-    if (!!document.querySelector(`.${userName}-userlist`)) {
+    if (c!!document.querySelector(`.${userName}-userlist`)) {
         return;
     }
 

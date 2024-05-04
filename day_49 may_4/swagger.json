@@ -1,0 +1,117 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Swagger For ToDo CRud",
+        "description": "A sample API that uses swagger to explain ToDO Crud functionality",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Swagger API Team"
+        },
+        "license": {
+            "name": "MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/todos": {
+            "get": {
+                "summary": "Get All Todos",
+                "description": "Get All the Todos available",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/todoResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Operation",
+                        "schema": {
+                            "$ref": "#/definitions/invalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/todos/{todoId}": {
+            "get": {
+                "summary": "Get 1 Todos",
+                "description": "Get 1  Todo available",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "todoId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Operation",
+                        "schema": {
+                            "$ref": "#/definitions/todoResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Operation",
+                        "schema": {
+                            "$ref": "#/definitions/invalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "todoResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "completed": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "invalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
