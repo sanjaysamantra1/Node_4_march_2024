@@ -1,0 +1,218 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Swagger Employee CRUD",
+        "description": "A sample API that uses a Employee as an example to demonstrate features in the swagger-2.0 specification",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Swagger API Team"
+        },
+        "license": {
+            "name": "MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/employees": {
+            "get": {
+                "summary": "Get All Employees",
+                "description": "Get All the Employees From MongoDB",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee fetched Successfully",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Employee"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Operation",
+                        "schema": {
+                            "$ref": "#/definitions/invalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/{eId}": {
+            "get": {
+                "summary": "Get 1 Employees",
+                "description": "Get 1 Of the Employees From MongoDB",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "eId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee fetched Successfully",
+                        "schema": {
+                            "$ref": "#/definitions/Employee"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Operation",
+                        "schema": {
+                            "$ref": "#/definitions/invalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/employee": {
+            "post": {
+                "summary": "Create a new Employee",
+                "description": "Save a new employee in MongoDB",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "description": "employee payload",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Employee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Employee Added Successfully"
+                    },
+                    "400": {
+                        "description": "Invalid Operation",
+                        "schema": {
+                            "$ref": "#/definitions/invalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/{eId}": {
+            "patch": {
+                "summary": "updates an Employee",
+                "description": "updates an Employee",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "eId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "description": "employee payload",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee Updated Successfully"
+                    },
+                    "400": {
+                        "description": "Invalid Operation",
+                        "schema": {
+                            "$ref": "#/definitions/invalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/{eId}": {
+            "delete": {
+                "summary": "Deletes an Employee",
+                "description": "Deletes an Employee",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "eId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee Deleted Successfully"
+                    },
+                    "400": {
+                        "description": "Invalid Operation",
+                        "schema": {
+                            "$ref": "#/definitions/invalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Employee": {
+            "type": "object",
+            "properties": {
+                "eId": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sal": {
+                    "type": "integer"
+                },
+                "gender": {
+                    "type": "string"
+                }
+            }
+        },
+        "invalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
