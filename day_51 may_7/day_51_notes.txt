@@ -1,0 +1,99 @@
+Unit Testing with Jasmine
+=========================
+-Unit testing is important to verify the behavior of the smallest units of code in application. 
+-It helps improve the quality of  code and reduces the amount of time we spend on bug fixing. 
+-unit testing helps to find bugs early in the development life cycle.
+-Jasmine is an open-source and  popular JavaScript testing framework to test any kind of JavaScript application.
+
+
+1.install jasmine globally
+   npm i -g jasmine
+2.Install jasmine-node
+   npm install jasmine-node
+3.Initialize the Jasmine Environment
+  jasmine init
+4.verify your configuration file. (spec/support/jasmine.json)
+  jasmine.json
+5.run the below command to run tests
+  jasmine					 (run all the tests)
+  jasmine spec/demo.spec.js  (run tests for only 1 file)
+ 
+ 
+Coverage Report
+===============
+1. npm i istanbul
+2. istanbul cover --include-all-sources spec/tests/index.spec.js && istanbul check-coverage
+
+ 
+Jasmine Terminologies
+=====================
+describe()  Test suite (Group of testcases)
+it() 		test case / spec
+test()      test case / spec
+
+expect(actual).matcher(expected);
+expect(app.add(2,3)).toBe(5);
+
+
+Matchers
+--------
+toBe();
+not.toBe();
+toBeDefined();
+not.toBeDefined();
+toEqual();
+toBeTruthy();  
+toBeFalsy();  
+toBeGreaterThan();
+toBeLessThan();
+toContain()
+
+
+Setup and Teardown
+Jasmine Global Functions
+------------------------
+beforeAll()
+beforeEach()
+afterEach()
+afterAll()
+
+fdescribe() - focused describe. If it exists, jasmine will run only fdescribe spec and ignore other type of describe (describe and xdescribe).
+xdescribe() - disabled describe. It will never be executed.
+fit() - focused it()
+xit() - disabled it()
+
+
+Stub
+====
+-stub: A stub is a function/object that replaces the actual behavior of a module with a fixed response.
+ex: if you’re testing a function that writes a value to the database, you should write a stub that avoids the db interaction but returns a successful result.
+-we have to set the expectations beforehand to make sure that everything we wanted would be executed.
+
+function saveUser(usrData, dbConn) {  
+  let q = createQueryFromUser(usrData)
+  let result = dbConn.query(q)
+  return result;
+}
+
+makeStub(dbConn, 'query', () => {
+  return true;
+})
+
+it("should return TRUE when the query succeeds", () => {
+  let result = saveUser({
+    name: "Fernando",
+    password: "1234"
+  }, dbConn)
+  result.should.be.true
+})
+
+
+Spy
+===
+-spies are stubs that gather execution information, so they can tell you, in the end, what got called, when and with which parameters.
+-Spies and stubs are two types of test doubles, which are objects or functions that mimic the behavior or state of the real objects/function. 
+-A spy is a function that records how it was called, such as the arguments, the return value, and the context. 
+-A stub is a function that replaces the real one and returns a predefined value or performs a predefined action. 
+
+spyOn(someObj, 'func').and.returnValue(42);
+spyOn(someObj, 'func').withArgs(2, 3).and.returnValue(5);
